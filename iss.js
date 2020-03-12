@@ -41,14 +41,20 @@ const fetchCoordsByIP = (ip, callback) => {
       return;
     }
 
-    const dataRec = JSON.parse(body);
+    // const dataRec = JSON.parse(body);
 
-    const coords = {
-      latitude: dataRec.data.latitude,
-      longitude: dataRec.data.longitude
-    };
+    // const coords = {
+    //   latitude: dataRec.data.latitude,
+    //   longitude: dataRec.data.longitude
+    // };
 
-    callback(null, coords);
+    // callback(null, coords);
+
+    //Use ES6 object shorthand instead
+
+    const { latitude, longitude } = JSON.parse(body).data;
+
+    callback(null, { latitude, longitude });
 
 
   });
